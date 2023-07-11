@@ -13,7 +13,7 @@
 
 While there are a large number of supported hardware configurations for vSIM, not all configurations are supported and it is important to check the [vSIM installation guide](https://documentation.nokia.com/cgi-bin/dbaccessfilename.cgi/3HE18406AAAETQZZA01_V1_Virtualized%207250%20IXR%207750%20SR%20and%207950%20XRS%20Simulator%20(vSIM)%20Installation%20and%20Setup%20Guide%2022.10.R2.pdf) for your SROS release to confirm your configuration is supported.
 
-The documentation also includes the correct naming structure for the various cards, which is helpful when we build the topology file for [containerlab](https://containerlab.dev).
+The documentation also includes the correct naming structure for the various cards, which is helpful when we build the [topology file](https://github.com/drewelliott/vsim-multi-linecard-clab/blob/main/examples/sr-7s_topo.yml) for [containerlab](https://containerlab.dev).
 ```
 chassis router chassis-number 1 power-shelf 1 admin-state enable power-shelf-type ps-a10-shelf-dc
 chassis router chassis-number 1 power-shelf 1 power-module 1 admin-state enable power-module-type ps-a-dc-6000
