@@ -174,6 +174,7 @@ topology:
 
 > :flashlight: It doesn't matter which port on the line card you configure, as long as you keep in mind how you have defined the links in the topology file, the lowest port number **configured** on the card will be aligned with the lowest `ethX` number for that card.
 
+![link to ethX mapping](images/link-eth-map.pdf)
 Here is an example of the links defined in our topology file - we have two links on each card:
 
 ```
