@@ -126,3 +126,51 @@ The following table is from the [22.10 vSIM installation guide](https://document
 </td></tr><tr class="ro1"><td style="text-align:left;width:2.3083in; " class="ce3">
 <p>ms8-sdd+2-qsfp28-b</p>
 </td></tr></table>
+
+### Select supported hardware
+
+Using the table for reference, choose your supported hardware and note that the name in the table is the exact name to be used in the topology file.
+
+### Check memory requirements
+
+Check for the memory requirement for the card(s) you have chosen by referring to [Table 2: VM memory requirements by card type](https://documentation.nokia.com/cgi-bin/dbaccessfilename.cgi/3HE18406AAAETQZZA01_V1_Virtualized%207250%20IXR%207750%20SR%20and%207950%20XRS%20Simulator%20(vSIM)%20Installation%20and%20Setup%20Guide%2022.10.R2.pdf#%5B%7B%22num%22%3A35%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C81.692%2C206.561%2Cnull%5D)
+
+### Build topology file
+
+In the [containerlab](https://containerlab.dev) topology file, there are several important caveats to keep in mind as we are defining the distributed chassis with multiple line cards.
+
+> :flashlight: Note that each line card is a separate VM, so be sure to consider the additional resource load that will be placed on the host node.
+
+In the topology file, we will be specifying the TIMOS line from vSIM parlance. 
+
+```
+topology:
+  nodes:
+    R1:
+      kind: vr-sros
+      image: vr-sros:22.10.R1
+      startup-config: sr-7s-R1.partial.cfg
+      type: >-
+        cp: cpu=6 min_ram=6 chassis=sr-7s slot=A card=cpm-s ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=1 sfm=sfm-s card=xcm-7s xiom/x1=iom-s-1.5t mda/x1/1=ms24-10/100gb-sfpdd ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=2 sfm=sfm-s card=xcm-7s mda/1=s18-100gb-qsfp28 ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=3 sfm=sfm-s card=xcm-7s mda/1=s36-400gb-qsfpdd
+      license: ~/license/license-sros22.txt
+```
+- **cpu** is the number of cores to provide this particular "line card" (each line card is a separate VM)
+- **min_ram** is the memory requirement for the line card (from [Table 2: VM memory requirements by card type](https://documentation.nokia.com/cgi-bin/dbaccessfilename.cgi/3HE18406AAAETQZZA01_V1_Virtualized%207250%20IXR%207750%20SR%20and%207950%20XRS%20Simulator%20(vSIM)%20Installation%20and%20Setup%20Guide%2022.10.R2.pdf#%5B%7B%22num%22%3A35%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C81.692%2C206.561%2Cnull%5D))
+- **max_nics** defines the number of ports that are available on the line card. 
+> :flashlight: A vSIM router in [containerlab](https://containerlab.dev) can only have a maximum of 32 *interfaces* on it, no matter how many ports are available on the line cards.
+- SR OS nodes use `ethX` notation for their interfaces, where `X` denotes a port number on a line card.
+- When multiple line cards are defined, the `max_nics` setting defines the number of ports assigned to that particular line card. Looking at our `slot 1` line card, we have a 24-port MDA, but we are only assigning 6 links to that line card. (in the example code, I have assigned 6 links to each line card)
+- It is important to plan out the connectivity among the routers ahead of time to be able to assign the appropriate number of `max_nics` to each line card.
+> :flashlight: With three line cards and six links assigned to each line card, just remember which slots have which `ethX` assigned to them for the `links` definition in the topology file.
+
+| Slot Num | ethX |
+| :---: | :---: |
+| 1 | eth1-eth6 |
+| 2 | eth7-eth12 |
+| 3 | eth13-eth18 |
+
+> :flashlight: It doesn't matter which port on the line card you configure, as long as you keep in mind how you have defined the links in the topology file, the lowest port number on the card will be aligned with the lowest `ethX` number for that card.
+
