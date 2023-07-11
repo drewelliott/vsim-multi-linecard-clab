@@ -1,0 +1,30 @@
+name: lic-audit
+
+topology:
+  nodes:
+    R1:
+      kind: vr-sros
+      image: registry.srlinux.dev/pub/vr-sros:22.10.R1
+      type: >-
+        cp: cpu=6 min_ram=6 chassis=sr-7s slot=A card=cpm-s ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=1 sfm=sfm-s card=xcm-7s xiom/x1=iom-s-1.5t mda/x1/1=ms24-10/100gb-sfpdd ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=2 sfm=sfm-s card=xcm-7s mda/1=s18-100gb-qsfp28 ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=3 sfm=sfm-s card=xcm-7s mda/1=s36-400gb-qsfpdd
+      license: ~/license/license-sros22.txt
+    R2:
+      kind: vr-sros
+      image: registry.srlinux.dev/pub/vr-sros:22.10.R1
+      type: >-
+        cp: cpu=6 min_ram=6 chassis=sr-7s slot=A card=cpm-s ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=1 sfm=sfm-s card=xcm-7s xiom/x1=iom-s-1.5t mda/x1/1=ms24-10/100gb-sfpdd ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=2 sfm=sfm-s card=xcm-7s mda/1=s18-100gb-qsfp28 ___
+        lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=3 sfm=sfm-s card=xcm-7s mda/1=s36-400gb-qsfpdd
+      license: ~/license/license-sros22.txt
+
+  links:
+  - endpoints: ["R1:eth1", "R2:eth1"]
+  - endpoints: ["R1:eth2", "R2:eth2"]
+  - endpoints: ["R1:eth7", "R2:eth7"]
+  - endpoints: ["R1:eth8", "R2:eth8"]
+  - endpoints: ["R1:eth13", "R2:eth13"]
+  - endpoints: ["R1:eth14", "R2:eth14"]
