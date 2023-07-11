@@ -17,39 +17,6 @@ The documentation also includes the correct naming structure for the various car
 
 The following table is from the [22.10 vSIM installation guide](https://documentation.nokia.com/cgi-bin/dbaccessfilename.cgi/3HE18406AAAETQZZA01_V1_Virtualized%207250%20IXR%207750%20SR%20and%207950%20XRS%20Simulator%20(vSIM)%20Installation%20and%20Setup%20Guide%2022.10.R2.pdf)
 
-| 7750 SR-7s | | | |
-| --- | --- | --- | --- |
-| SFM | Card | XIOM | MDA |
-| --- | --- | --- | --- |
-| sfm-s | cpm-s | n/a | n/a |
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-<!--This file was converted to xhtml by LibreOffice - see https://cgit.freedesktop.org/libreoffice/core/tree/filter/source/xslt for the code.-->
-
-<style>
-    table { border-collapse:collapse; border-spacing:0; empty-cells:show }
-    td, th { vertical-align:top; font-size:10pt;}
-    h1, h2, h3, h4, h5, h6 { clear:both;}
-    p { white-space: nowrap; }
-    ol, ul { margin:0; padding:0;}
-    li { list-style: none; margin:0; padding:0;}
-    span.footnodeNumber { padding-right:1em; }
-    span.annotation_style_by_filter { font-size:95%; font-family:Arial; background-color:#fff000;  margin:0; border:0; padding:0;  }
-    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}
-    .ta1 { writing-mode:horizontal-tb; direction:ltr; }
-    .ce1 { font-size:10pt; font-family:'Liberation Sans'; border-top-width:0.0261cm; border-top-style:solid; border-top-color:#000000; border-left-width:0.0261cm; border-left-style:solid; border-left-color:#000000; border-bottom-width:0.0261cm; border-bottom-style:solid; border-bottom-color:#000000; border-right-width:0.0261cm; border-right-style:solid; border-right-color:#000000; background-color:#999999; font-weight:bold; }
-    .ce2 { font-size:10pt; font-family:'Liberation Sans'; border-top-width:0.0261cm; border-top-style:solid; border-top-color:#000000; border-left-width:0.0261cm; border-left-style:solid; border-left-color:#000000; border-bottom-width:0.0261cm; border-bottom-style:solid; border-bottom-color:#000000; border-right-width:0.0261cm; border-right-style:solid; border-right-color:#000000; vertical-align:top; }
-    .ce3 { font-size:10pt; font-family:'Liberation Sans'; border-top-width:0.0261cm; border-top-style:solid; border-top-color:#000000; border-left-width:0.0261cm; border-left-style:solid; border-left-color:#000000; border-bottom-width:0.0261cm; border-bottom-style:solid; border-bottom-color:#000000; border-right-width:0.0261cm; border-right-style:solid; border-right-color:#000000; }
-    .co1 { width:0.889in; }
-    .co2 { width:2.3083in; }
-    .ro1 { height:0.178in; }
-    /* ODF styles with no properties representable as CSS:
-     { } */
-</style>
-
-
-<body dir="ltr">
 <table border="0" cellspacing="0" cellpadding="0" class="ta1"><colgroup><col width="99"/><col width="99"/><col width="99"/><col width="256"/></colgroup><tr class="ro1"><td colspan="4" style="text-align:left;width:0.889in; " class="ce1">
 <p>7750 SR-7s</p>
 </td></tr><tr class="ro1"><td style="text-align:left;width:0.889in; " class="ce1">
