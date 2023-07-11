@@ -14,8 +14,8 @@ topology:
       license: ~/license/license-sros22.txt
     R2:
       kind: vr-sros
-      startup-config: sr-7s-R2.partial.cfg
       image: registry.srlinux.dev/pub/vr-sros:22.10.R1
+      startup-config: sr-7s-R2.partial.cfg
       type: >-
         cp: cpu=6 min_ram=6 chassis=sr-7s slot=A card=cpm-s ___
         lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=1 sfm=sfm-s card=xcm-7s xiom/x1=iom-s-1.5t mda/x1/1=ms24-10/100gb-sfpdd ___
