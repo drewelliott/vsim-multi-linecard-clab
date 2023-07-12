@@ -1,8 +1,0 @@
-all:
-  children:
-    vr-sros:
-      hosts:
-        clab-sr7s-R1:
-          ansible_host: 172.20.20.3
-        clab-sr7s-R2:
-          ansible_host: 172.20.20.2
