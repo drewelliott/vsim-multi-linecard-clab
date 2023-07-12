@@ -1,0 +1,161 @@
+{
+  "name": "sr7s",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-c072dbb5e579",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "2001:172:20:20::/64",
+        "ipv6-gw": "2001:172:20:20::1",
+        "mtu": "1500",
+        "external-access": true
+      }
+    }
+  },
+  "nodes": {
+    "R1": {
+      "index": "0",
+      "shortname": "R1",
+      "longname": "clab-sr7s-R1",
+      "fqdn": "R1.sr7s.io",
+      "group": "",
+      "labdir": "/home/drelliot/git/vsim-multi-linecard-clab/examples/clab-sr7s/R1",
+      "kind": "vr-sros",
+      "image": "registry.srlinux.dev/pub/vr-sros:22.10.R1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-c072dbb5e579",
+        "clab-node-group": "",
+        "clab-node-kind": "vr-sros",
+        "clab-node-lab-dir": "/home/drelliot/git/vsim-multi-linecard-clab/examples/clab-sr7s/R1",
+        "clab-node-name": "R1",
+        "clab-node-type": "cp: cpu=6 min_ram=6 chassis=sr-7s slot=A card=cpm-s ___ lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=1 sfm=sfm-s card=xcm-7s xiom/x1=iom-s-1.5t mda/x1/1=ms24-10/100gb-sfpdd ___ lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=2 sfm=sfm-s card=xcm-7s mda/1=s18-100gb-qsfp28 ___ lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=3 sfm=sfm-s card=xcm-7s mda/1=s36-400gb-qsfpdd",
+        "clab-topo-file": "/home/drelliot/git/vsim-multi-linecard-clab/examples/sr-7s_topo.yml",
+        "containerlab": "sr7s"
+      }
+    },
+    "R2": {
+      "index": "1",
+      "shortname": "R2",
+      "longname": "clab-sr7s-R2",
+      "fqdn": "R2.sr7s.io",
+      "group": "",
+      "labdir": "/home/drelliot/git/vsim-multi-linecard-clab/examples/clab-sr7s/R2",
+      "kind": "vr-sros",
+      "image": "registry.srlinux.dev/pub/vr-sros:22.10.R1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "2001:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-c072dbb5e579",
+        "clab-node-group": "",
+        "clab-node-kind": "vr-sros",
+        "clab-node-lab-dir": "/home/drelliot/git/vsim-multi-linecard-clab/examples/clab-sr7s/R2",
+        "clab-node-name": "R2",
+        "clab-node-type": "cp: cpu=6 min_ram=6 chassis=sr-7s slot=A card=cpm-s ___ lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=1 sfm=sfm-s card=xcm-7s xiom/x1=iom-s-1.5t mda/x1/1=ms24-10/100gb-sfpdd ___ lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=2 sfm=sfm-s card=xcm-7s mda/1=s18-100gb-qsfp28 ___ lc: cpu=6 min_ram=6 max_nics=6 chassis=sr-7s slot=3 sfm=sfm-s card=xcm-7s mda/1=s36-400gb-qsfpdd",
+        "clab-topo-file": "/home/drelliot/git/vsim-multi-linecard-clab/examples/sr-7s_topo.yml",
+        "containerlab": "sr7s"
+      }
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:1d:24:dd",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:78:41:cf",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:de:c8:92",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth2",
+        "mac": "aa:c1:ab:13:e4:c3",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth7",
+        "mac": "aa:c1:ab:c9:83:08",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth7",
+        "mac": "aa:c1:ab:82:28:3b",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth8",
+        "mac": "aa:c1:ab:1a:68:ae",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth8",
+        "mac": "aa:c1:ab:82:2e:d4",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth13",
+        "mac": "aa:c1:ab:fc:6a:01",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth13",
+        "mac": "aa:c1:ab:9d:9f:a9",
+        "peer": "a"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth14",
+        "mac": "aa:c1:ab:80:d7:4c",
+        "peer": "z"
+      },
+      "z": {
+        "node": "R2",
+        "interface": "eth14",
+        "mac": "aa:c1:ab:25:5a:dc",
+        "peer": "a"
+      }
+    }
+  ]
+}
