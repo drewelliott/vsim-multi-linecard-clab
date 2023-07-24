@@ -160,7 +160,7 @@ topology:
 - **cpu** is the number of cores to provide this particular "line card" (each line card is a separate VM)
 - **min_ram** is the memory requirement for the line card (from [Table 2: VM memory requirements by card type](https://documentation.nokia.com/cgi-bin/dbaccessfilename.cgi/3HE18406AAAETQZZA01_V1_Virtualized%207250%20IXR%207750%20SR%20and%207950%20XRS%20Simulator%20(vSIM)%20Installation%20and%20Setup%20Guide%2022.10.R2.pdf#%5B%7B%22num%22%3A35%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C81.692%2C206.561%2Cnull%5D))
 - **max_nics** defines the number of ports that are available on the line card. 
-> :flashlight: A vSIM router in [containerlab](https://containerlab.dev) can only have a maximum of 32 *interfaces* on it, no matter how many ports are available on the line cards.
+> :flashlight: A vSIM router in [containerlab](https://containerlab.dev) can only have a maximum of 20 *interfaces* on it, no matter how many ports are available on the line cards.
 - SR OS nodes use `ethX` notation for their interfaces, where `X` denotes a port number on a line card.
 - When multiple line cards are defined, the `max_nics` setting defines the number of ports assigned to that particular line card. Looking at our `slot 1` line card, we have a 24-port MDA, but we are only assigning 6 links to that line card. (in the example code, I have assigned 6 links to each line card)
 - It is important to plan out the connectivity among the routers ahead of time to be able to assign the appropriate number of `max_nics` to each line card.
@@ -172,7 +172,7 @@ topology:
 | 2 | eth7-eth12 |
 | 3 | eth13-eth18 |
 
-> :flashlight: It doesn't matter which port on the line card you configure, as long as you keep in mind how you have defined the links in the topology file, the lowest port number **configured** on the card will be aligned with the lowest `ethX` number for that card.
+> :flashlight: The `ethX` links map to the physical ports of the line card, starting with the first port. Even if you configure breakouts on the ports, only the first port of the breakout will be able to pass traffic. *example: eth1 would map to 1/1/c1 - if you were to configure 1/1/c1 with a c10-10g (10x10g) breakout, only the first port on the breakout would have a link - eth2 would map to 1/1/c2*
 
 ![link to ethX mapping](images/link-eth-map.png)
 
